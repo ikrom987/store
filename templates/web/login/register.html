@@ -1,0 +1,56 @@
+{% extends 'web/base.html' %}
+{%block css%}
+<style>
+.register{
+    padding: 10px 20px 20px 20px;
+    margin: 5px 200px 30px 200px;
+    background-color: #f2f2f2;
+}
+h5{
+    padding-top: 15px;
+}
+input:last-child{
+    margin-top: 15px;
+}
+.none{
+    display: none;
+}
+</style>
+{%endblock css%}
+{% block content %}
+    <div class="container">
+        <div class="register">
+            {% if code == 'username' %}
+            <div class="alert alert-danger
+            ">
+                <h3>This login is already used!</h3>
+            </div>
+        {% elif code == 'email' %}
+            <div class="alert alert-danger">
+                <h3>This email is already used!</h3>
+            </div>
+        {% endif %}
+            <h2>Sign Up</h2>
+            <form action="{% url 'sign_up'%}" method="POST">
+                {% csrf_token %}
+                <h5>Login</h5>
+                <input required type="text" name="username" class="form-control mb-2" placeholder="Enter login">
+        
+                <h5>Password</h5>
+                <input required type="password" name="password" class="form-control mb-2" placeholder="Enter password">
+        
+                <h5>Full Name</h5>
+                <input required type="text" name="full_name" class="form-control mb-2" placeholder="Enter full name">
+        
+                <h5>Number</h5>
+                <input required type="number" name="number" class="form-control mb-2" placeholder="Enter phonenumber">
+        
+                <h5>Email</h5>
+                <input required type="email" name="email" class="form-control mb-2" placeholder="Enter email">
+        
+                <input type="submit" value="Sign up" class="btn btn-info" >
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

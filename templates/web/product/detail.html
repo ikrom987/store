@@ -1,0 +1,130 @@
+{% extends 'web/base.html' %}
+{%block content%}
+<div class="product-v1 pro-v2 pro-v4">
+    <div class="container">
+    <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12 pro-v4">
+    <div class="product-img-slide pro-v2 pro-v4">
+    <div class="product-images quickview">
+    <div class="main-img js-product-slider-normal">
+    <a href="#" class="hover-images effect"><img src="{{product.image_max.url}}" alt="photo" class="img-responsive img-fluid"></a>
+    </div>
+    </div>
+
+    </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="product-info s8 pro-v1 pro-v2 pro-v4">
+    <div class="sale-para2 shop-1 pro-v1 shop-5 shop-6 shop-7 shop-8 pro-v1 pro-v2">
+    <p><a href="#">{{product.title}}</a></p>
+    <ul>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li class="st"><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a><em><span>6 Review(s)</span></em></li>
+    
+    <li><a class="sales-36-products" href="#">{{product.price}} Sum</a>
+    </li>
+    
+    </ul>
+    </div>
+    <div class="zoa-qtt pro-v1">
+    <button type="button" class="quantity-left-minus btn btn-number " id="minus" >
+    </button>
+    <input type="text" name="number" value="1" class="product_quantity_number js-number" id="quan">
+    <button type="button" class="quantity-right-plus btn btn-number " id="plus">
+    </button>
+    
+    </div>
+    <button class="btn btn-success" id="add" data-price="{{product.price}}">Add to Cart</button>
+    <script>
+        let plus = document.querySelector('#plus')
+        let minus = document.querySelector('#minus')
+        let quan = document.querySelector('#quan')
+        plus.addEventListener('click', ()=> {
+                quan.value = +quan.value + 1
+        })
+        minus.addEventListener('click', ()=> {
+            if (quan.value > 1) {
+                quan.value = +quan.value - 1
+            }
+        })
+        let add = document.querySelector('#add')
+        add.addEventListener('click', ()=> {
+            document.querySelector('#cart_count').innerText = +document.querySelector('#cart_count').innerText + +quan.value
+            
+            document.querySelector('#cart_sum').innerText = +document.querySelector('#cart_sum').innerText + (+quan.value * +add.dataset.price)
+            fetch("/add/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken
+                },
+                body: JSON.stringify({
+                    productId: {{product.id}},
+                    quantity: quan.value
+                })
+            }).then(resp => resp.json()).then(data => console.log(data))
+            quan.value = 1
+        })
+    </script>
+    <div class="product-bottom-group shop7 s8 pro-v1 pro-v2">
+    <a href="#" class="fa fa-shopping-bag shop7 pro-v1">
+    <span class="zoa-icon-quick-view shop7"></span>
+    </a> <a href="#" class="fa fa-balance-scale shop7 pro-v1" >
+    <span class="zoa-icon-heart shop7"></span>
+    </a>
+    <a href="#" class="fa fa-heart shop7">
+    <span class="zoa-icon-cart shop7"></span>
+    </a>
+    </div>
+    <div class="size-guide pro-v2 pro-v4">
+    <div class="sku pro-v1">
+    <p>Category: <span>{{product.category}}</span></p><br>
+    <p>Tags: <span>jewellery, jackets, masonry, shoes, short</span></p>
+    </div>
+    </div>
+    <div class="share-shop7 s8">
+    <ul>
+    <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <!-- details -->
+    <div class="container">
+    <div class="single-product-tab bd-bottom">
+    <ul class="tabs text-center">
+    <li class="active"><a data-toggle="pill" href="#review">Description</a></li>
+    </ul>
+    <div class="tab-content">
+    <div id="desc" class="tab-pane fade in ">
+    
+    
+    <div class="jan">
+    <div class="left-v4">
+    <a href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a><p>La Femme For Flaunt Magazine<br> <em>Jan 30, 2018</em></p>
+    </div>
+    <div class="right-v4">
+    <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a><p>How did gardener and the gang first...<br> <em>Jan 30, 2018</em></p>
+    </div>
+    </div>
+    </div>
+    <div id="review" class="tab-pane fade in active "> 
+    <div class="para-details">
+    <p>{{product.description}}</p>
+    </div>
+
+    </div> 
+    </div>
+    </div>
+    </div>
+{%endblock content%}

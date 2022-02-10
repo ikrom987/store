@@ -1,0 +1,130 @@
+{% extends 'web/base.html' %}
+{%block css%}
+<style>
+    .row {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap; /* IE10 */
+      flex-wrap: wrap;
+      margin: 0 -16px;
+    }
+    
+    .col-25 {
+      -ms-flex: 25%; /* IE10 */
+      flex: 25%;
+    }
+    
+    .col-50 {
+      -ms-flex: 50%; /* IE10 */
+      flex: 50%;
+    }
+    
+    .col-75 {
+      -ms-flex: 75%; /* IE10 */
+      flex: 75%;
+    }
+    
+    .col-25,
+    .col-50,
+    .col-75 {
+      padding: 0 16px;
+    }
+    
+    .qqq {
+      background-color: whitesmoke;
+      padding: 5px 20px 15px 20px;
+      border-radius: 3px;
+    }
+    
+    input[type=text] {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    
+    label {
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .icon-container {
+      margin-bottom: 20px;
+      padding: 7px 0;
+      font-size: 24px;
+    }    
+    a {
+      color: #2196F3;
+    }
+    
+    hr {
+      border: 1px solid lightgrey;
+    }
+    
+    span.price {
+      float: right;
+      color: grey;
+    }
+    
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+    @media (max-width: 800px) {
+      .row {
+        flex-direction: column-reverse;
+      }
+      .col-25 {
+        margin-bottom: 20px;
+      }
+    }
+    </style>
+{%endblock css%}
+{%block content%}
+<div class="row">
+  <div class="col-75">
+    <div class="container qqq" style="margin-bottom: 20px;">
+      <form action="" id="checkout">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input required type="text" id="fname" name="fullname" value="{{request.user.first_name}} {{request.user.last_name}}" placeholder="John M. Doe">
+
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input required type="text" id="email" name="email" value="{{request.user.email}}" placeholder="john@example.com">
+
+            <label for="adr"><i class="fa fa-phone"></i>Phone</label>
+            <input required type="text" id="adr" name="phone" value="{{request.user.account.phone}}">
+
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input required type="text" id="adr" name="address" value="{{request.user.account.address}}" placeholder="542 W. 15th Street">
+
+          </div>
+          
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+        <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-info btn-lg" style="padding: 10px 50px;">
+        </div>
+      </form>
+      <h1 style="display: none;" id="sent_block" class="display-1">Success!!! Your order №<span id="trans"></span></h1>
+    </div>
+  </div>
+</div>
+<script>
+  let checkout = document.querySelector('#checkout')
+  let sent_block = document.querySelector('#sent_block')
+  let trans = document.querySelector('#trans')
+
+  checkout.addEventListener('submit', (e)=> {
+    e.preventDefault(
+    checkout.style.display = 'none',
+    sent_block.style.display = 'block',
+    trans.innerText = 'fdfbj25329'
+    )
+  })
+</script>
+
+{%endblock content%}

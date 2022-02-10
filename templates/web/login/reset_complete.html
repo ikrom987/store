@@ -1,0 +1,37 @@
+{%extends 'web/base.html'%}
+{%block css%}
+<style>
+.login{
+    padding: 10px 20px 20px 20px;
+    margin: 5px 200px 30px 200px;
+    background-color: #f2f2f2;
+}
+h5{
+    padding-top: 15px;
+}
+input:last-child{
+    margin-top: 15px;
+}
+.none{
+    display: none;
+}
+#id_email {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+</style>
+{%endblock css%}
+
+{% block content %}
+<div class="container">
+    <div class="login">
+       <h1>Siz muvofaqiyatli ozgartirdiz</h1>
+       <a href="{% url 'login' %}">Login</a>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,95 @@
+{% extends 'web/base.html' %}
+{%block content %}
+<div class="container">
+    <div class="" style="padding-bottom: 20px;">
+        {% for o in order.orderitem_set.all %}
+        <div class="" style="display: flex; align-items: center; justify-content: space-around;">
+            <img src="{{o.product.image_min.url}}" width="200px" alt="">
+            <div>
+                <h3>{{o.product.title}}</h3>
+                <h4 class="text-muted">{{o.product.price}} Sum</h4>
+            </div>
+            <div class="zoa-qtt pro-v1" style="margin-top: 13px;">
+                <button data-price="{{o.product.price}}" type="button" class="quantity-left-minus btn btn-number product_minus">
+                </button>
+                <input type="text" name="number" value="{{o.quantity}}" class="product_quantity_number js-number product_count">
+                <button data-price="{{o.product.price}}" data-id="{{o.id}}" type="button" class="quantity-right-plus btn btn-number product_plus" >
+                </button>
+            </div>
+            <h3> <span class="product_total">{{ o.get_total }}</span> UZS</h3>
+            <button class="btn btn-lg btn-danger remove_btn" style="border-radius: 30px;" data-id="{{o.id}}">DELETE</button>
+        </div>
+        {% endfor %}
+        <hr>
+        <div style="display: flex; align-items: center; justify-content: flex-end;">
+            <h5 style="padding-right: 10px;"><span class="text-muted">Total:</span> <b>{{order.get_total_order_item_sum}} Sum</b></h5>
+            <h5><span class="text-muted">Products:</span> <b>{{order.get_total_order_item_count}}</b></h5>
+        </div>
+        <div class="text-center">
+            <a href="{% url 'web_checkout' %}" class="btn btn-info btn-lg" style="border-radius: 30px;">Checkout</a>
+        </div>
+    </div>
+</div>
+<script>
+    let btns_remove = document.querySelectorAll('.remove_btn');
+    btns_remove.forEach(btn => {
+        btn.addEventListener('click', ()=> {
+            btn.parentElement.remove()
+            fetch("/remove/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken
+                },
+                body: JSON.stringify({
+                    id:  btn.dataset.id
+                })
+            }).then(resp => resp.json()).then(data => console.log(data))
+        })
+    })
+
+    let product_plus = document.querySelectorAll('.product_plus')
+    let product_minus = document.querySelectorAll('.product_minus')
+    let product_count = document.querySelectorAll('.product_count')
+    let product_total = document.querySelectorAll('.product_total')
+
+    product_plus.forEach((btn, i) => {
+        btn.addEventListener('click', ()=> {
+            product_count[i].value = +product_count[i].value + 1
+            product_total[i].innerText = +product_total[i].innerText + +btn.dataset.price
+            document.querySelector('#cart_count').innerText = +document.querySelector('#cart_count').innerText + 1
+            document.querySelector('#cart_sum').innerText = +document.querySelector('#cart_sum').innerText + +btn.dataset.price
+            fetch("/plus/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken
+                },
+                body: JSON.stringify({
+                    id: btn.dataset.id,
+                })
+            }).then(resp => resp.json()).then(data => console.log(data))
+        })
+    })
+    product_minus.forEach((btn, i) => {
+        btn.addEventListener('click', ()=> {
+            if (product_count[i].value > 1) {
+                product_count[i].value = +product_count[i].value - 1
+                product_total[i].innerText = +product_total[i].innerText - +btn.dataset.price
+                document.querySelector('#cart_count').innerText = +document.querySelector('#cart_count').innerText - 1
+                document.querySelector('#cart_sum').innerText = +document.querySelector('#cart_sum').innerText - +btn.dataset.price
+                fetch("/minus/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrftoken
+                },
+                body: JSON.stringify({
+                    id: btn.dataset.id,
+                })
+            }).then(resp => resp.json()).then(data => console.log(data))
+            }
+        })
+    })
+</script>
+{% endblock content %}

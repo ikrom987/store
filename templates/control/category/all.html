@@ -1,0 +1,58 @@
+{% extends "control/base.html" %}
+{% load static %}
+{% block content %}
+<br>
+<div class="p-5 mt-5 mx-5 card card-body">
+    {% if code == 'create' %}
+    <div class="alert alert-success">
+        <button class="close" data-dismiss='alert'>&times;</button>
+        <h4>Category successfully created</h4>
+    </div>
+    {% elif code == 'edit' %}
+    <div class="alert alert-warning">
+        <button class="close" data-dismiss='alert'>&times;</button>
+        <h4>Category successfully edited</h4>
+    </div>
+    {% elif code == 'delete' %}
+    <div class="alert alert-danger">
+        <button class="close" data-dismiss='alert'>&times;</button>
+        <h4>Category successfully deleted</h4>
+    </div>
+    {% elif code == 'title' %}
+    <div class="alert alert-danger">
+        <button class="close" data-dismiss='alert'>&times;</button>
+        <h4>Title is dublicated</h4>
+    </div>
+    {% endif %}
+
+
+
+    <h3 class="text-dark pb-3 mt-3">Categories</h3>
+    <table class="table table-striped">
+        <tr class="">
+            <th>Priority</th>
+            <th>Title</th>
+            <th>Products</th>
+            <th></th>
+        </tr>
+        {% for category in categories %}
+        <tr>
+            <td>{{category.priority}}</td>
+            <td>{{category.title}}</td>
+            <td>{{category.total_products}}</td>
+            <td><a href="{% url 'category_detail' category.slug %}" class="btn btn-secondary btn-sm">Detail</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}
+
+{% block js %}
+<script>
+    let notification = document.querySelector(".alert");
+
+    setTimeout(() => {
+        notification.classList.add("d-none")
+    }, 5000);
+</script>
+{% endblock js %}

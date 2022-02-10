@@ -1,0 +1,250 @@
+{% extends 'web/base.html' %}
+{%load static%}
+{% block content %}
+<header class="">
+    {%for i in categories%}
+    {%if i.id == c%}
+    <div class="text-center" style=" background-color: #7cd0f5; opacity: 0.7; color: #fff; padding: 20px;">
+    <h2>{{i.title}}</h2>
+    </div>
+</header>
+<section>
+    <div class="wrappage">
+    <div class="shop-page">
+    <div class="container">
+    <div class="row shop">
+    <div class="col-md-7 col-sm-6 col-xs-12 shoppage1">
+    <div class="we-found">
+    <h4>We found <strong>{{i.total_products}}</strong> products available for you</h4>
+    {%endif%}
+    {%endfor%}
+    </div>
+    </div>
+    <div class="col-md-5 col-sm-6 col-xs-12 shoppage1">
+    <div class="shows">
+    <ul class="pagination shows shows-shoppage1">
+    <li><a href="#">Shows:</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    </ul>
+    </div>
+    <div class="wrappage">
+    <!-- Filters -->
+    <div class="dropdown drop-filter">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+    <span class="caret"></span><img class="img-filter" src="images/icon7.png" alt="">Filters</button>
+    <div class=" dropdown-menu filter-shoppage">
+    <div class="container container-filter">
+    <div class="row">
+    <div class="col-md-2 widget-filter filter-cate no-pd-top">
+    <h4>Sort by</h4>
+    <ul>
+    <li><a href="">Default</a></li>
+    <li><a href="">Popularity</a></li>
+    <li><a href="">Newnest</a></li>
+    <li><a href="">Price: low to high</a></li>
+    <li><a href="">Price: high to low</a></li>
+    </ul>
+    </div>
+    <div class="col-md-2 widget-filter filter-cate filter-color">
+    <h4>Price</h4>
+    <ul>
+    <li><a href="">$0.00 - $300.00</a></li>
+    <li><a href="">$300.00 - $600.00</a></li>
+    <li><a href="">$600.00 - $900.00</a></li>
+    <li><a href="">$900.00 - $120.00</a></li>
+    <li><a href="">$120.00+</a></li>
+    </ul>
+    </div>
+    <div class="col-md-3 widget-filter filter-cate  filter-style-size">
+    <h4>Size</h4>
+    <ul>
+    <li><a class="st-xs" href="#">XS</a></li>
+    <li><a href="">S</a></li>
+    <li><a href="">M</a></li>
+    <li><a href="">L</a></li>
+    <li><a class="st-xl" href="">XL</a></li>
+    <li><a class="xxl" href="">XXL</a></li>
+    <li><a class="xxl" href="">Free size</a></li>
+    </ul>
+    </div>
+    <div class="col-md-2 widget-filter filter-cate filter-style">
+    <h4>Color</h4>
+    <ul class="color2">
+    <li><a href=""><img src="images/elip1.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip2.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip3.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip4.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip5.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip6.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip7.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip8.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip9.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip10.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip11.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip12.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip13.png" alt=""></a></li>
+    </ul>
+    </div>
+    <div class="col-md-3 widget-filter filter-cate  filter-style-brand">
+    <h4>Brand</h4>
+    <div class="ul-1 shop3">
+    <ul>
+    <li><a href="#">Miukid</a></li>
+    <li><a href="#">KidStar</a></li>
+    <li><a href="#">Momy</a></li>
+    <li><a href="#">Huggies</a></li>
+    <li><a href="#">Mshop</a></li>
+    <li><a href="#">iBaby</a></li>
+    <li><a href="#">Me & Be</a></li>
+    <li><a href="#">CocoShop</a></li>
+    </ul>
+    </div>                 
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="wrappage">
+    <div class="filter-collection-left hidden-lg hidden-md">
+    <a class="btn"><i class="zoa-icon-filter"><img src="images/icon7.png" alt=""></i> Filter</a>
+    </div>
+    <div class="col-xs-12 hidden-md hidden-lg col-left collection-sidebar" id="filter-sidebar">
+    <div class="close-sidebar-collection hidden-lg hidden-md">
+    <span>Filter</span><i class="icon_close ion-close"></i>
+    </div>
+    <div class="widget-filter filter-cate no-pd-top">
+    <h4>Sort by</h4>
+    <ul>
+    <li><a href="">Default</a></li>
+    <li><a href="">Popularity</a></li>
+    <li><a href="">Newnest</a></li>
+    <li><a href="">Price: low to high</a></li>
+    <li><a href="">Price: high to low</a></li>
+    </ul>
+    </div>
+    <div class="widget-filter filter-cate filter-color">
+    <h4>Price</h4>
+    <ul>
+    <li><a href="">$0.00 - $300.00</a></li>
+    <li><a href="">$300.00 - $600.00</a></li>
+    <li><a href="">$600.00 - $900.00</a></li>
+    <li><a href="">$900.00 - $120.00</a></li>
+    <li><a href="">$120.00+</a></li>
+    </ul>
+    </div>
+    <div class="widget-filter filter-cate filter-size">
+    <h4>Size</h4>
+    <ul>
+    <li><a href="#">XS</a></li>
+    <li><a href="">S</a></li>
+    <li><a href="">M</a></li>
+    <li><a href="">L</a></li>
+    <li><a href="">XL</a></li>
+    <li><a class="xxl" href="">XXL</a></li>
+    <li><a class="xxl" href="">Free size</a></li>
+    </ul>
+    </div>
+    <div class="widget-filter filter-cate filter-size">
+    <h4>Color</h4>
+    <ul class="color2">
+    <li><a href=""><img src="images/elip1.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip2.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip3.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip4.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip5.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip6.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip7.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip8.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip9.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip10.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip11.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip12.png" alt=""></a></li>
+    <li><a href=""><img src="images/elip13.png" alt=""></a></li>
+    </ul>
+    </div>
+    <div class="widget-filter filter-cate filter-size">
+    <h4>Brand</h4>
+    <div class="ul-1 shop3">
+    <ul>
+    <li><a href="#">Miukid</a></li>
+    <li><a href="#">KidStar</a></li>
+    <li><a href="#">Momy</a></li>
+    <li><a href="#">Huggies</a></li>
+    <li><a href="#">Mshop</a></li>
+    <li><a href="#">iBaby</a></li>
+    <li><a href="#">Me & Be</a></li>
+    <li><a href="#">CocoShop</a></li>
+    </ul>
+    </div>
+    </div>
+    <a class="zoa-btn btn-filter">
+    Filter
+    </a>
+    </div>
+    </div>
+    </div>
+    </div> 
+    
+    </div>
+    </div>
+    <div class="border shopv1"></div>
+    </div>
+    </div>
+    <!-- Products -->
+    <div class="list">
+    <div class="container">
+    <div class="row">
+    <div class="list-products">
+    {% for product in products %}
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12  product-item">
+    <div class="product-img">
+    <a href="{% url 'web_detail' product.slug %}"><img src="{{ product.image_max.url }}" alt="" class="img-responsive"></a>
+    <div class="sale-img shop1">
+    <div class="before shop1 bf-sp-1"></div>
+    </div>
+    <div class="ribbon zoa-hot shop-v1 ribbon-new-shop1"><span>New</span></div>
+    <div class="product-button-group product-details">
+    <a href="#" class="zoa-btn zoa-quickview">
+    <span class="fa fa-shopping-bag"></span>
+    </a>
+    <a href="#" class="zoa-btn zoa-wishlist">
+    <span class="fa fa-balance-scale"></span>
+    </a>
+    <a href="#" class="zoa-btn zoa-addcart">
+    <span class="fa fa-heart"></span>
+    </a>
+    </div>
+    </div>
+    <div class="sale-para2 shop-1 pro-v1">
+    <p><a href="#">{{ product.title }}</a></p>
+    <ul>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+    <li class="st-rv"><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a><em><span>6 Review(s)</span></em></li>
+    
+    <li><a class="sales-36" href="#">{{product.price}}</a>
+    </li>
+    
+    </ul>
+    </div>
+    </div>
+    {% endfor %}
+
+
+    </div>
+
+                                        </div>
+                                        <div class="loadmore">
+                                            <a href="#">load more</a>
+                                        </div>
+                                        <div class="border"></div>
+                                    </div>
+                                </div>
+                            </div> 
+    </section>
+
+{% endblock content %}

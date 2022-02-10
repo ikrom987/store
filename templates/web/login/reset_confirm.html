@@ -1,0 +1,60 @@
+{%extends 'web/base.html'%}
+{%block css%}
+<style>
+.login{
+    padding: 10px 20px 20px 20px;
+    margin: 5px 200px 30px 200px;
+    background-color: #f2f2f2;
+}
+h5{
+    padding-top: 15px;
+}
+input:last-child{
+    margin-top: 15px;
+}
+.none{
+    display: none;
+}
+input {
+    color: #333;
+}
+#id_email {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+</style>
+{%endblock css%}
+
+{% block content %}
+<div class="container">
+    <div class="login">
+       Reset password
+       <form action="">
+
+            {% csrf_token %}
+            
+            {% if validlink %}
+                {% field in form %}
+                    <p>
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <p style="color: red;">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+                <button type="submit">Send Password</button>
+            {% else %}
+            <p>Siz sbros qiladigon ssilkani yozdingiz</p>
+            {% endif %}
+
+
+       </form>
+    </div>
+</div>
+{% endblock %}
+

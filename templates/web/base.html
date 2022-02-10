@@ -1,0 +1,435 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>MiuKid - Multi Store Responsive HTML Template</title>
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/png">
+	<link rel="stylesheet" href="{% static 'web/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/slick-theme.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'web/css/styles.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+	{%block css%}
+
+	{%endblock css%}
+
+	<script>
+		function getToken(name) {
+		  var cookieValue = null;
+		  if (document.cookie && document.cookie !== "") {
+			var cookies = document.cookie.split(";");
+			for (var i = 0; i < cookies.length; i++) {
+			  var cookie = cookies[i].trim();
+			  if (cookie.substring(0, name.length + 1) === name + "=") {
+				cookieValue = decodeURIComponent(
+				  cookie.substring(name.length + 1)
+				);
+				break;
+			  }
+			}
+		  }
+		  return cookieValue;
+		}
+  
+		var csrftoken = getToken("csrftoken");
+	  </script>
+</head>
+
+<body>
+	<!-- push menu-->
+	<div class="pushmenu menu-home5">
+		<div class="menu-push">
+			<span class="close-left js-close"><i class="ion-ios-close-empty f-40"></i></span>
+			<div class="clearfix"></div>
+			<form role="search" method="get" id="searchform" class="searchform" action="/search">
+				<div>
+					<label class="screen-reader-text" for="q"></label>
+					<input type="text" placeholder="Search for products" value="" name="q" id="q" autocomplete="off">
+					<input type="hidden" name="type" value="product">
+					<button type="submit" id="searchsubmit"><i class="ion-ios-search-strong"></i></button>
+				</div>
+			</form>
+			<ul class="nav-home5 js-menubar">
+				
+				<li class="level1 active dropdown"><a href="#">Shop</a>
+					<span class="icon-sub-menu"></span>
+					<div class="menu-level1 js-open-menu">
+						<ul class="level1">
+							<li class="level2">
+								<a href="#">Shop Layout</a>
+
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+				</li>
+				<li class="level1 active dropdown"><a href="#">Mega Menu</a></li>
+				<li class="level1">
+					<a href="#">Pages</a>
+					<span class="icon-sub-menu"></span>
+					<ul class="menu-level1 js-open-menu">
+						<li class="level2"><a href="About-Us.html" title="About Us ">About Us </a></li>
+						<li class="level2"><a href="About-Us-v2.html" title="Contact">About Us 2</a></li>
+						<li class="level2"><a href="Contact-Us.html" title="FAQs">Contact-us</a></li>
+						<li class="level2"><a href="#" title="404">404</a></li>
+						<li class="level2"><a href="#" title="Coming Soon">Coming Soon</a></li>
+					</ul>
+				</li>
+				<li class="level1">
+					<a href="#">Blog</a>
+					<span class="icon-sub-menu"></span>
+					<ul class="menu-level1 js-open-menu">
+						<li class="level2"><a href="Blog-grid-v1.html" title="Blog Standar">Blog Gird 1</a></li>
+						<li class="level2"><a href="Blog-grid-v2.html" title="Blog Gird">Blog Gird 2</a></li>
+						<li class="level2"><a href="Blog-grid-v3.html" title="Blog Sidebar">Blog Gird 3</a></li>
+						<li class="level2"><a href="Blog-grid-v4.html" title="Blog Single Post">Blog Gird 4</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="mobile-account">
+				<li><a href="#"><i class="fa fa-unlock-alt"></i>Login</a></li>
+				<li><a href="#"><i class="fa fa-user-plus"></i>Register</a></li>
+				<li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
+			</ul>
+			<h4 class="mb-title">connect and follow</h4>
+			<div class="mobile-social mg-bottom-30">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-google-plus"></i></a>
+			</div>
+		</div>
+	</div>
+	<header id="header" class="header-v2">
+		<div class="topbar hidden-xs hidden-sm">
+			<div class="container">
+				<div class="row flex">
+					<div class="col-md-5 col-sm-12 col-xs-12">
+						<div class="topbar-left homepage-v1">
+							<div class="a">
+								<a class="hover-images" href="#"><img src="{% static 'web/images/icon.png' %}" alt="icon">Sms Default welcome !</a>
+							</div>
+							<div class="topbar-social gift">
+								<a href="#"><i class="fa fa-gift home3" aria-hidden="true"></i>Gift Vouchers</a>
+								<span>02</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 justify-content-end">
+						<div class="topbar-right homepage-v1">
+							<div class="element element-currency">
+								<a href="#"><i class="fa fa-language" aria-hidden="true"></i>Language:</a>
+								<a id="label3" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span>ENG</span>
+									<span class="fa fa-chevron-down"></span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="label3">
+									<li><a href="#">EN-English</a></li>
+									<li><a href="#">US-American</a></li>
+									<li><a href="#">FR-France</a></li>
+								</ul>
+							</div>
+							<div class="element element-leaguage">
+								<a href="#"><i class="fa fa-money" aria-hidden="true"></i>Curency:</a>
+								<a id="label2" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									<span>USD</span>
+									<span class="fa fa-chevron-down"></span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="label2">
+									<li><a href="#">USD-Dollar</a></li>
+									<li><a href="#">Eur-Euro</a></li>
+									<li><a href="#">GBP-Pound</a></li>
+								</ul>
+							</div>
+							<div class="sign-in">
+								<p>
+									{% if request.user.is_authenticated %}
+									<a href="{% url 'log_out' %}">
+									Longout</a>
+									{% else %}
+									<a href="{% url 'register' %}">
+									Sign in/Register</a>
+									{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-center-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-12 col-xs-12 header">
+						<div class="logo">
+							<a href="#"><img src="{% static 'web/images/logo.png' %}" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12 logo">
+						<div class="date2">
+							<div class="date">
+								<a href="#"><i class="fa fa-calendar st-calendar" aria-hidden="true"></i></a>
+							</div>
+							<div class="para-a">
+								<h4>Mon - Sat 8h00 -18h00</h4>
+								<p>Sunday</p>
+								<span>CLOSED</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12 header-center2">
+						<div class="date2">
+							<div class="date">
+								<a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
+							</div>
+							<div class="para-a a2">
+								<h4>Every Week Sales!</h4>
+								<p>Discount</p>
+								<span>up to 50% off.</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-12 col-xs-12 hd-right">
+						<div class="date4">
+							<div class="date">
+								<a href="#"><i class="fa fa-phone st-phone" aria-hidden="true"></i></a>
+							</div>
+							<div class="para-a a3">
+								<h4>Have a Questions?</h4>
+								<p>Call:</p>
+								<span>1900 - 819898.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-center pro-v1 hp1">
+			<div class="container">
+				<!-- push-menu -->
+				<a href="#" class="icon-pushmenu js-push-menu">
+					<i class="fa fa-bars" aria-hidden="true"></i></a>
+					<div class="row flex align-items-center justify-content-between">
+						<div class="col-md-6 col-xs-12 col-sm-6 col2 flex justify-content-end">
+							<ul class="nav navbar-nav js-menubar hidden-xs hidden-sm">
+                                <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a {% if request.path == '/' %} style="background-color: #7cd0f5;border-radius: 30px; color: #fff;" class="menu-home-3 home-1-font" {% else %} class="menu-home-3 home-1-font" {% endif %} href="{% url 'web_index' %}">Home</a>
+								</li>
+                                {% for category in categories %}
+								<li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a 
+                                    {% if category.id == c %}
+                                    style="background-color: #7cd0f5;border-radius: 30px; color: #fff;" class="menu-home-3 home-1-font" 
+                                    {% else %} class="menu-home-3 home-1-font" 
+                                    {% endif %} 
+                                    href="{% url 'web_category' category.id %}">{{category.title}}</a>
+								</li>
+                                {% endfor %}
+							</ul>
+						</div>
+						<div class="col-md-6 col-xs-12 col-sm-6 carts">
+							<div class="search3 search-home-1">
+								<form method="get" action="/search" role="search" class="search-form  has-categories-select">
+									<input name="q" class="search-input" type="text" value="" placeholder="Search..." autocomplete="off">
+									<input type="hidden" name="post_type" value="product">
+									<button type="submit" id="search-btn"><i class="ion-ios-search-strong"></i></button>
+								</form>
+							</div>
+							<div class="date3 dropdown">
+								<div class="date mycart">
+									<a href="{% url 'web_cart'%}">
+										<button class="fa fa-shopping-bag dropdown-toggle" type="button">
+										</button>	
+									</a>								
+								</div>
+								<div class="para-a a4">
+									<h4><a href="#">My Cart.</a></h4>
+									<p id="cart_count">{{order.get_total_order_item_count}}</p>
+									<span>/ <span id="cart_sum">{{order.get_total_order_item_sum}} </span> UZS</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- header -->
+        {% block content %}
+        {% endblock content %}
+			<!-- footer -->
+			<footer>
+				<div class="footers">
+					<div class="container">
+						<div class="one">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="logo-para">
+										<a href="#"><img src="{% static 'web/images/logo.png' %}" alt="logo"></a>
+										<p><em><a href="#">Miukid is a premium eCommerce theme with<br>
+										advanced admin module.</a></em></p>
+									</div>
+									<div class="icon-para">
+										<ul>
+											<li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>Telephone: +84 988  992 085</a></li>
+											<li><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>Email: lamhvdesigner@gmail.com</a></li>
+											<li><a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i>8:00 - 19:00, Monday - Saturday,<br> 
+											Sunday - closed</a></li>
+										</ul>
+									</div>
+									<div class="bytheme">
+										<div class="bytheme2">
+											<a href="#">Buy This Theme</a>
+										</div>
+										<div class="icons-ft">
+											<ul>
+												<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-vine" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- footer-left -->
+								<div class="col-md-4 col-sm-4 col-xs-12 fix ">
+									<div class="ft-center">
+										<div class="information">
+											<h4>Information</h4>
+											<div class="border2"></div>
+											<a href="#">About Us</a>
+											<br>
+											<a href="#">Shipping & Returns</a>
+											<br>
+											<a href="#">Privacy Notice</a>
+											<br>
+											<a href="#">Conditions of Use</a>
+											<br>
+											<a href="#">RSS</a>
+											<br>
+										</div>
+										<div class="information center">
+											<h4>Service</h4>
+											<div class="border2"></div>
+											<a href="#">Online support</a>
+											<br>
+											<a href="#">Help & FAQs</a>
+											<br>
+											<a href="#">Call Center</a>
+											<br>
+											<a href="#">Contact Us</a>
+											<br>
+											<a href="#">Custom Link</a>
+											<br>
+										</div>
+									</div>
+								</div>
+								<!-- footer center -->
+								<div class="col-md-4 col-sm-4 col-xs-12 right">
+									<div class="Instagram">
+										<h4>Instagram</h4>
+										<div class="border2"></div>
+									</div>
+									<div class="img-ul img-ft-st">
+										<ul>
+											<li><a href="#"><img src="{% static 'web/images/img18.jpg' %}" alt="img"></a></li>
+											<li><a href="#"><img src="{% static 'web/images/img19.jpg' %}" alt="img"></a></li>
+											<li><a href="#"><img src="{% static 'web/images/img20.jpg' %}" alt="img"></a></li>
+											<li><a href="#"><img src="{% static 'web/images/img21.jpg' %}" alt="img"></a></li>
+										</ul>
+									</div>
+									<div class="img-ul img-ft-st">
+										<ul>
+											<li><a href="#"><img src="{% static 'web/images/img22.jpg' %}" alt="img"></a></li>
+											<li><a href="#"><img src="{% static 'web/images/img23.jpg' %}" alt="img"></a></li>
+											<li><a href="#"><img src="{% static 'web/images/img24.jpg' %}" alt="img"></a></li>
+											<li><a href="#"><img src="{% static 'web/images/img25.jpg' %}" alt="img"></a></li>
+										</ul>
+									</div>
+									<div class="menu-ft">
+										<ul>
+											<li><a href="#">Home</a></li>
+											<li><a href="#">New Arrivals</a></li>
+											<li><a href="#">Site map</a></li>
+										</ul>
+									</div>
+									<!-- footer right -->
+								</div>
+							</div>
+						</div>
+						<div class="border"></div>
+					</div>
+				</div>
+				
+				<!-- footer-ending -->
+				<div class="footerending">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-sm-8 col-xs-12">
+								<div class="fted-left">
+									<p>Copyright © 2018 by </p>
+									<a href="#">EngoTheme. </a>
+									<span>All Rights Reserved.</span>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-12 ">
+								<div class="fted-left two">
+									<ul>
+										<li><a href="#"><img src="{% static 'web/images/icon1.png' %}" alt="icon"></a></li>
+										<li><a href="#"><img src="{% static 'web/images/icon2.png' %}" alt="icon"></a></li>
+										<li><a href="#"><img src="{% static 'web/images/icon3.png' %}" alt="icon"></a></li>
+										<li><a href="#"><img src="{% static 'web/images/icon4.png' %}" alt="icon"></a></li>
+										<li><a href="#"><img src="{% static 'web/images/icon5.png' %}" alt="icon"></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<a href="#" class="zoa-btn scroll_top"><i class="ion-ios-arrow-up"></i></a>
+			<script src="{% static 'web/js/jquery.js' %}"></script>
+			<script src="{% static 'web/js/bootstrap.min.js' %}"></script>
+			<script src="{% static 'web/js/owl.carousel.min.js' %}"></script>
+			<script src="{% static 'web/js/slick.min.js' %}"></script>
+			<script src="{% static 'web/js/countdown.js' %}"></script>
+			<script src="{% static 'web/js/main.js' %}"></script>
+			<script>
+				$(document).ready(function() {
+					$('.owl-carousel').owlCarousel({
+						loop: true,
+						margin: 10,
+						nav: true,
+						autoplay: false,
+						autoplayTimeout: 3000,
+						responsive: {
+							0: {
+								items: 1
+							},
+							480: {
+								items: 1
+							},
+							1014: {
+								items: 1
+							},
+							1200: {
+								items: 1
+							},
+							1600: {
+								items: 1
+							}
+						}
+					});
+
+				});
+			</script>
+			{%block js%}
+
+			{%endblock js%}
+		</body>
+
+		</html>

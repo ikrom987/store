@@ -1,0 +1,62 @@
+{% extends 'web/base.html' %}
+{%load static%}
+{% block content %}
+
+<section>
+
+    <!-- On-Sale -->
+    <div class="onsale">
+        <div class="container">
+            <div class="product-related onsale">
+                <div class="title-pro-v1">
+                    <h3 class="related-title text-center onsale-home1">On Sale !</h3>
+                    <p><a href="" class="view
+                        ">View All Products<i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                    </div>
+                    <div class="owl-carousel owl-theme owl-cate v2 js-owl-cate-sales-hp1 owl-onsale">
+                        {% for product in products %}
+                        <div class="product-item pro-v1 home1">
+                            <div class="product-img product-img-home3">
+                                <a  href="{% url 'web_detail' product.slug %}"><img src="{{product.image_min.url}}" alt="" class="img-responsive"></a>
+                                <div class="sale-img shop1 shop2 st-v2">
+                                    <div class="before shop1 v2 pro-v1 st-v2 hp1 before-home1 bf-onsales-hp1"></div>
+                                </div>
+                                <!-- <div class="ribbon zoa-hot shop-v1 v2 hp1"><span>-25%</span></div> -->
+                                <div class="product-button-group hp1 onsale-home1">
+                                    <a href="#" class="zoa-btn zoa-quickview stwh-onsales-home1">
+                                        <span class="fa fa-shopping-bag"></span>
+                                    </a>
+                                    <a href="#" class="zoa-btn zoa-wishlist stwh-onsales-home1">
+                                        <span class="fa fa-balance-scale"></span>
+                                    </a>
+                                    <a href="#" class="zoa-btn zoa-addcart stwh-onsales-home1">
+                                        <span class="fa fa-heart "></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="sale-para2 shop-1 pro-v1 hp2-para home1">
+                                <p><a href="#">{{product.title}}<br> Detail</a></p>
+                                <div class="star-icons">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                        <li class="review"><a class="view" href=""><em>6 Review(s)</em></a></li>
+                                    </ul>
+                                </div>
+                                <div class="review-hp1">
+                                    <p>{{product.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock content %}
